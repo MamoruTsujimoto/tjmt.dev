@@ -17,7 +17,7 @@ export default class Document extends NextDocument {
 
           <meta property='og:type' content={config.info.ogp.type} />
           <meta name='twitter:card' content={config.info.twitter.card} />
-
+          <link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/devicons/devicon@v2.14.0/devicon.min.css' />
           <link rel='preconnect' href='https://fonts.googleapis.com' />
           <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='true' />
           <link

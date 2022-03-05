@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
 import dayjs from 'dayjs'
 import Link from 'next/link'
-import { FunctionComponent } from 'react'
+import { FunctionComponent, FC } from 'react'
+import Tags from 'components/Tags'
 import { BlogPost } from 'types/notion'
 import config from 'utils/config'
 import styles from 'utils/styles'
@@ -12,36 +13,18 @@ type BlogCardProps = {
 const localizedFormat = require('dayjs/plugin/localizedFormat')
 dayjs.extend(localizedFormat)
 
-const Articles: FunctionComponent<BlogCardProps> = ({ post }) => {
+const Articles: FC<BlogCardProps> = ({ post }) => {
+  console.log(post)
   return (
-    <Article>
-      <Link href={`/post/${post.slug}`}>
-        <a>
-          <div key={post.title}>
-            <div>
-              <div>
-                <span>
-                  <h4>{dayjs(post.date).format('LL')}</h4>
-                </span>
-                <span>
-                  <h3>{post.title}</h3>
-                </span>
-
-                <span>
-                  <p>{post.description}</p>
-                </span>
-
-                <span>
-                  {post.tags.map((tag) => (
-                    <span key={tag.id} className='bg-green-300 text-green-800 px-2 py-1 text-xs rounded-lg'>
-                      #{tag.name}
-                    </span>
-                  ))}
-                </span>
-              </div>
-            </div>
-          </div>
-        </a>
+    <Article key={post.title}>
+      <Link href={`/post/${post.slug}`} passHref>
+        <A>
+          <H2>{post.title}</H2>
+          <ArticleWrapper>
+            <Tags tags={post.tags} />
+            <H4>{dayjs(post.date).format('LL')}</H4>
+          </ArticleWrapper>
+        </A>
       </Link>
     </Article>
   )
@@ -49,6 +32,29 @@ const Articles: FunctionComponent<BlogCardProps> = ({ post }) => {
 
 const Article = styled.article`
   margin: 25px 0;
+
+  &:first-of-type {
+    margin: 0 0 25px;
+  }
+`
+
+const H2 = styled.h2`
+  margin: 0 0 10px;
+  ${styles.mixins.fontSize(30, 35)}
+
+  @media (max-width: ${styles.sizes.breakpoint.small}) {
+    margin: 0 0 5px;
+    ${styles.mixins.fontSize(20, 35)}
+  }
+`
+
+const H4 = styled.h4``
+
+const A = styled.a``
+
+const ArticleWrapper = styled.div`
+  display: flex;
+  align-items: center;
 `
 
 export default Articles

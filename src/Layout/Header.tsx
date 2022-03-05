@@ -25,9 +25,21 @@ const Root = styled.div`
   height: 82px;
   margin: 0 60px;
   border-bottom: 1px solid #121b22;
+
+  @media (max-width: ${styles.sizes.breakpoint.small}) {
+    margin: 0 30px;
+
+    a {
+      width: 100%;
+    }
+  }
 `
 const H1 = styled.h1`
   ${styles.mixins.fontSize(35, 35)}
+
+  @media (max-width: ${styles.sizes.breakpoint.small}) {
+    text-align: center;
+  }
 `
 
 export default Header

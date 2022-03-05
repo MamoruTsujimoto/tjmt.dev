@@ -47,6 +47,8 @@ const Main = styled.main`
   padding: 50px 0;
   @media (max-width: ${styles.sizes.breakpoint.small}) {
     max-width: 100%;
+    margin: 0 30px;
+    padding: 30px 0;
   }
 `
 

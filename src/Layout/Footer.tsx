@@ -21,6 +21,11 @@ const Root = styled.div`
   height: 82px;
   margin: 0 60px;
   border-top: 1px solid #121b22;
+
+  @media (max-width: ${styles.sizes.breakpoint.small}) {
+    margin: 0 30px;
+    justify-content: center;
+  }
 `
 
 const Copyright = styled.p`

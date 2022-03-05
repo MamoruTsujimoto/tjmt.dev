@@ -25,7 +25,7 @@ export default class NotionService {
       },
       sorts: [
         {
-          property: 'Updated',
+          property: 'Published',
           direction: 'descending',
         },
       ],
