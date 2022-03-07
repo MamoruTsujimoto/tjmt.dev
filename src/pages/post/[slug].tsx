@@ -2,9 +2,10 @@ import styled from '@emotion/styled'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
 import ReactMarkdown from 'react-markdown'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { nord } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import Layout from 'Layout/Layout'
 import NotionService from 'services/notion-service'
-import config from 'utils/config'
 import styles from 'utils/styles'
 
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -56,7 +57,25 @@ const Post = ({ markdown, post }: InferGetStaticPropsType<typeof getStaticProps>
       <Layout>
         <H1>{post.title}</H1>
         <ArticleBody>
-          <ReactMarkdown>{markdown}</ReactMarkdown>
+          <ReactMarkdown
+            components={{
+              code({ node, inline, className, children, ...props }) {
+                const match = /language-(\w+)/.exec(className || '')
+                const codeString = String(children).replace(/\n$/, '')
+                return !inline && match ? (
+                  <SyntaxHighlighter style={nord} language={match[1]} PreTag='div' {...props}>
+                    {codeString}
+                  </SyntaxHighlighter>
+                ) : (
+                  <code className={className} {...props}>
+                    {children}
+                  </code>
+                )
+              },
+            }}
+          >
+            {markdown}
+          </ReactMarkdown>
         </ArticleBody>
       </Layout>
     </>
@@ -92,7 +111,7 @@ const ArticleBody = styled.div`
     }
   }
 
-  pre {
+  /* pre {
     margin: 30px 0;
     padding: 30px;
     background-color: #000;
@@ -101,7 +120,7 @@ const ArticleBody = styled.div`
     @media (max-width: ${styles.sizes.breakpoint.small}) {
       width: 100%;
     }
-  }
+  } */
 
   hr {
     margin: 30px 0;

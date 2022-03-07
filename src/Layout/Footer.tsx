@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 import type { NextPage } from 'next'
-import Link from 'next/link'
 
 import config from 'utils/config'
 import styles from 'utils/styles'

@@ -1,8 +1,6 @@
 import styled from '@emotion/styled'
-import dayjs from 'dayjs'
 import { FC } from 'react'
 import { TagType } from 'types/notion'
-import config from 'utils/config'
 import styles from 'utils/styles'
 
 type TagProps = {
