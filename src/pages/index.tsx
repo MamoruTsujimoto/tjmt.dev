@@ -6,8 +6,6 @@ import Layout from 'Layout/Layout'
 import Articles from 'components/Articles'
 import NotionService from 'services/notion-service'
 import { BlogPost } from 'types/notion'
-import config from 'utils/config'
-import styles from 'utils/styles'
 
 export const getStaticProps: GetStaticProps = async () => {
   const notionService = new NotionService()

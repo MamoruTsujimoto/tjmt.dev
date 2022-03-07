@@ -11,6 +11,7 @@ export default class Document extends NextDocument {
       <Html lang='ja'>
         <Head prefix='og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#'>
           <meta name='theme-color' content='#ffffff' />
+          <meta name='robots' content='noindex' />
           <link rel='apple-touch-icon' sizes='180x180' href={config.info.icon.apple} />
           <link rel='icon' type='image/png' sizes='32x32' href={config.info.icon.fav32} />
           <link rel='icon' type='image/png' sizes='16x16' href={config.info.icon.fav16} />

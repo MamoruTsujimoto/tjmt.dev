@@ -1,10 +1,9 @@
 import styled from '@emotion/styled'
 import dayjs from 'dayjs'
 import Link from 'next/link'
-import { FunctionComponent, FC } from 'react'
+import { FC } from 'react'
 import Tags from 'components/Tags'
 import { BlogPost } from 'types/notion'
-import config from 'utils/config'
 import styles from 'utils/styles'
 
 type BlogCardProps = {
@@ -14,7 +13,6 @@ const localizedFormat = require('dayjs/plugin/localizedFormat')
 dayjs.extend(localizedFormat)
 
 const Articles: FC<BlogCardProps> = ({ post }) => {
-  console.log(post)
   return (
     <Article key={post.title}>
       <Link href={`/post/${post.slug}`} passHref>
