@@ -12,16 +12,16 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const notionService = new NotionService()
 
   // @ts-ignore
-  const p = await notionService.getSingleBlogPost(context.params?.slug)
+  const params = await notionService.getSingleBlogPost(context.params?.slug)
 
-  if (!p) {
+  if (!params) {
     throw ''
   }
 
   return {
     props: {
-      markdown: p.markdown,
-      post: p.post,
+      markdown: params.markdown,
+      post: params.post,
     },
   }
 }
@@ -31,8 +31,6 @@ export async function getStaticPaths() {
 
   const posts = await notionService.getPublishedBlogPosts()
 
-  // Because we are generating static paths, you will have to redeploy your site whenever
-  // you make a change in Notion.
   const paths = posts.map((post) => {
     return `/post/${post.slug}`
   })
@@ -110,17 +108,6 @@ const ArticleBody = styled.div`
       }
     }
   }
-
-  /* pre {
-    margin: 30px 0;
-    padding: 30px;
-    background-color: #000;
-    color: #fff;
-    white-space: pre-wrap;
-    @media (max-width: ${styles.sizes.breakpoint.small}) {
-      width: 100%;
-    }
-  } */
 
   hr {
     margin: 30px 0;
