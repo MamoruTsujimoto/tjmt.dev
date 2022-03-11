@@ -14,7 +14,6 @@ export default class NotionService {
   async getPublishedBlogPosts(): Promise<BlogPost[]> {
     const database = process.env.NOTION_DATABASE_ID ?? ''
 
-    // list blog posts
     const response = await this.client.databases.query({
       database_id: database,
       filter: {
@@ -40,7 +39,7 @@ export default class NotionService {
     let post, markdown
 
     const database = process.env.NOTION_DATABASE_ID ?? ''
-    // list of blog posts
+
     const response = await this.client.databases.query({
       database_id: database,
       filter: {
@@ -91,7 +90,6 @@ export default class NotionService {
           cover = page.cover.external.url
           break
         default:
-          // Add default cover image if you want...
           cover = ''
       }
     }
@@ -100,6 +98,7 @@ export default class NotionService {
       id: page.id,
       cover: cover,
       title: page.properties.Name.title[0].plain_text,
+      category: page.properties.Category.select,
       tags: page.properties.Tags.multi_select,
       description: page.properties.Description.rich_text[0].plain_text,
       date: page.properties.Updated.last_edited_time,

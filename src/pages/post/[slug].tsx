@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import dayjs from 'dayjs'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
 import ReactMarkdown from 'react-markdown'
@@ -56,6 +57,7 @@ const Post = ({ markdown, post }: InferGetStaticPropsType<typeof getStaticProps>
 
       <Layout>
         <H1>{post.title}</H1>
+        <PostData>{dayjs(post.date).format('MMM DD, YYYY')}</PostData>
         <ArticleBody>
           <ReactMarkdown
             components={{
@@ -63,7 +65,7 @@ const Post = ({ markdown, post }: InferGetStaticPropsType<typeof getStaticProps>
                 const match = /language-(\w+)/.exec(className || '')
                 const codeString = String(children).replace(/\n$/, '')
                 return !inline && match ? (
-                  <SyntaxHighlighter style={nord} language={match[1]} PreTag='div' {...props}>
+                  <SyntaxHighlighter style={nord} language={match[1]} wrapLongLines='pre-wrap' PreTag='div' {...props}>
                     {codeString}
                   </SyntaxHighlighter>
                 ) : (
@@ -83,13 +85,23 @@ const Post = ({ markdown, post }: InferGetStaticPropsType<typeof getStaticProps>
 }
 
 const H1 = styled.h1`
-  margin: 0 0 50px;
+  margin: 30px 0 10px;
   text-align: center;
+
+  @media (max-width: ${styles.sizes.breakpoint.small}) {
+    margin: 30px 0 25px;
+  }
+`
+
+const PostData = styled.div`
+  text-align: center;
+
+  ${styles.mixins.fontSize(12, 12)}
 `
 
 const ArticleBody = styled.div`
   width: 800px;
-  margin: 0 auto;
+  margin: 50px auto 0;
 
   @media (max-width: ${styles.sizes.breakpoint.small}) {
     width: 100%;
@@ -111,16 +123,11 @@ const ArticleBody = styled.div`
     }
   }
 
-  /* pre {
-    margin: 30px 0;
-    padding: 30px;
-    background-color: #000;
-    color: #fff;
-    white-space: pre-wrap;
+  code {
     @media (max-width: ${styles.sizes.breakpoint.small}) {
-      width: 100%;
+      white-space: pre-wrap;
     }
-  } */
+  }
 
   hr {
     margin: 30px 0;
