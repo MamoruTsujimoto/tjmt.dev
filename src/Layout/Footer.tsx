@@ -12,23 +12,30 @@ const Footer: NextPage = () => {
   )
 }
 
-const Root = styled.div`
+const Root = styled.footer`
   grid-area: footer;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  height: 82px;
-  margin: 0 60px;
-  border-top: 1px solid #121b22;
+  position: sticky;
+  bottom: 19px;
+  height: 40px;
+  border-top: 2px solid #121b22;
+  border-left: 2px solid #121b22;
+  border-right: 2px solid #121b22;
+  border-bottom: 1px solid #121b22;
+  z-index: 3;
+  background: ${styles.colors.primary};
 
   @media (max-width: ${styles.sizes.breakpoint.small}) {
-    margin: 0 30px;
+    margin: 0;
     justify-content: center;
   }
 `
 
 const Copyright = styled.p`
-  color: #bdcbd2;
+  margin: 0 15px;
+  color: #121b22;
   letter-spacing: 0.15em;
   ${styles.mixins.fontSize(12, 12)}
 `

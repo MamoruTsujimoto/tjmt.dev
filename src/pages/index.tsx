@@ -6,6 +6,7 @@ import Layout from 'Layout/Layout'
 import Articles from 'components/Articles'
 import NotionService from 'services/notion-service'
 import { BlogPost } from 'types/notion'
+import styles from 'utils/styles'
 
 export const getStaticProps: GetStaticProps = async () => {
   const notionService = new NotionService()
@@ -40,6 +41,12 @@ const Home: NextPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps
   )
 }
 
-const Root = styled.section``
+const Root = styled.section`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1px;
+  align-items: center;
+  background: ${styles.colors.secondary};
+`
 
 export default Home

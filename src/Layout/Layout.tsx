@@ -16,6 +16,10 @@ const Layout = ({ children }: Props) => {
       <Header />
       <Main>{children}</Main>
       <Footer />
+      <OutlineWrapper>
+        <Outline />
+        <OutlineBackground />
+      </OutlineWrapper>
     </Root>
   )
 }
@@ -27,12 +31,11 @@ const Root = styled.div`
     'main' 1fr
     'footer' auto
     / 1fr;
-  gap: 8px;
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background: rgb(18, 27, 34);
-  background: linear-gradient(0deg, rgba(18, 27, 34, 0.9374124649859944) 0%, rgba(32, 66, 84, 0.819765406162465) 100%);
+  padding: 18px;
+  background: ${styles.colors.secondary};
   z-index: 1;
 
   @media (max-width: ${styles.sizes.breakpoint.small}) {
@@ -40,15 +43,40 @@ const Root = styled.div`
   }
 `
 
+const OutlineWrapper = styled.div`
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  padding: 18px;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 2;
+`
+
+const Outline = styled.div`
+  width: 100%;
+  height: 100%;
+  border: 2px solid #121b22;
+`
+
+const OutlineBackground = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 18px solid ${styles.colors.primary};
+`
+
 const Main = styled.main`
   grid-area: main;
   position: relative;
-  margin: 0 60px;
-  padding: 50px 0;
+  height: 3000px;
+  background: ${styles.colors.primary};
+
   @media (max-width: ${styles.sizes.breakpoint.small}) {
     max-width: 100%;
-    margin: 0 30px;
-    padding: 30px 0;
   }
 `
 

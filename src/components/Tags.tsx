@@ -22,19 +22,13 @@ const Tags: FC<TagProps> = ({ tags }) => {
 }
 
 const Block = styled.div`
-  margin: 0 10px 0 0;
+  margin: 0;
 `
 
 const Icon = styled.span`
-  /* display: inline-flex;
-  justify-content: center;
-  align-items: center; */
+  display: inline-block;
   margin: 0;
-  /* padding: 4px;
-  border: 1px solid #000;
-  border-radius: 50%; */
-
-  ${styles.mixins.fontSize(20, 20)}
+  ${styles.mixins.fontSize(30, 0)}
 `
 
 export default Tags

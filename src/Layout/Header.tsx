@@ -17,17 +17,22 @@ const Header: NextPage = () => {
   )
 }
 
-const Root = styled.div`
+const Root = styled.header`
   grid-area: header;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 82px;
-  margin: 0 60px;
-  border-bottom: 1px solid #121b22;
+  display: grid;
+  grid-template-columns: 1fr;
+  position: sticky;
+  top: 18px;
+  background: ${styles.colors.secondary};
+  z-index: 3;
+
+  a {
+    display: block;
+    padding: 2px;
+  }
 
   @media (max-width: ${styles.sizes.breakpoint.small}) {
-    margin: 0 30px;
+    margin: 0;
 
     a {
       width: 100%;
@@ -35,6 +40,8 @@ const Root = styled.div`
   }
 `
 const H1 = styled.h1`
+  padding: 8px;
+  background: ${styles.colors.primary};
   ${styles.mixins.fontSize(35, 35)}
 
   @media (max-width: ${styles.sizes.breakpoint.small}) {
