@@ -34,7 +34,7 @@ const Block = styled.div`
 const Icon = styled.span`
   display: inline-flex;
   margin: 0;
-  ${styles.mixins.fontSize(30, 30)}
+  ${styles.mixins.fontSize(80, 80)}
 `
 
 export default Category
