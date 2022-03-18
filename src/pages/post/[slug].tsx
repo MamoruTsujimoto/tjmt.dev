@@ -5,7 +5,7 @@ import Head from 'next/head'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { nord } from 'react-syntax-highlighter/dist/cjs/styles/prism'
-import Layout from 'layout/Layout'
+import Layout from 'Layout/Layout'
 import NotionService from 'services/notion-service'
 import styles from 'utils/styles'
 
