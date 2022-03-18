@@ -22,7 +22,7 @@ export default class Document extends NextDocument {
           <link rel='preconnect' href='https://fonts.googleapis.com' />
           <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='true' />
           <link
-            href='https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;400;500&family=Monsieur+La+Doulaise&family=M+PLUS+1p&family=Metrophobic&display=swap'
+            href='https://fonts.googleapis.com/css2?family=Six+Caps&family=Raleway:wght@100;200;400;500&family=Monsieur+La+Doulaise&family=M+PLUS+1p&family=Metrophobic&display=swap'
             rel='stylesheet'
           />
           <GlobalStyles styles={globalStyles} />

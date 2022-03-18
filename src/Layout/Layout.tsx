@@ -1,8 +1,8 @@
 import styled from '@emotion/styled'
 import { useContext, useEffect } from 'react'
 
-import Footer from 'Layout/Footer'
-import Header from 'Layout/Header'
+import Footer from 'layout/Footer'
+import Header from 'layout/Header'
 import styles from 'utils/styles'
 
 type Props = {
@@ -72,7 +72,6 @@ const OutlineBackground = styled.div`
 const Main = styled.main`
   grid-area: main;
   position: relative;
-  height: 3000px;
   background: ${styles.colors.primary};
 
   @media (max-width: ${styles.sizes.breakpoint.small}) {

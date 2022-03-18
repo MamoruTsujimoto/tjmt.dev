@@ -5,7 +5,7 @@ import Head from 'next/head'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { nord } from 'react-syntax-highlighter/dist/cjs/styles/prism'
-import Layout from 'Layout/Layout'
+import Layout from 'layout/Layout'
 import NotionService from 'services/notion-service'
 import styles from 'utils/styles'
 
@@ -58,6 +58,7 @@ const Post = ({ markdown, post }: InferGetStaticPropsType<typeof getStaticProps>
       <Layout>
         <H1>{post.title}</H1>
         <PostData>{dayjs(post.date).format('MMM DD, YYYY')}</PostData>
+        <Category>{post.category.name}</Category>
         <ArticleBody>
           <ReactMarkdown
             components={{
@@ -99,16 +100,36 @@ const PostData = styled.div`
   ${styles.mixins.fontSize(12, 12)}
 `
 
+const Category = styled.span`
+  display: block;
+  margin: 8px 0;
+  font-weight: normal;
+  ${styles.mixins.fontSize(11, 11)}
+  text-align: center;
+`
+
 const ArticleBody = styled.div`
   width: 800px;
-  margin: 50px auto 0;
+  margin: 10em auto;
 
   @media (max-width: ${styles.sizes.breakpoint.small}) {
     width: 100%;
   }
 
   p {
-    margin: 0 0 30px;
+    margin: 30px 0;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  a {
+    text-decoration: underline;
   }
 
   ul {
@@ -127,6 +148,12 @@ const ArticleBody = styled.div`
     @media (max-width: ${styles.sizes.breakpoint.small}) {
       white-space: pre-wrap;
     }
+  }
+
+  blockquote {
+    margin: 5em 0;
+    padding: 0 10px;
+    border-left: 5px solid #000;
   }
 
   hr {

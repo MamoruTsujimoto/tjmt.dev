@@ -40,9 +40,10 @@ const Root = styled.header`
   }
 `
 const H1 = styled.h1`
-  padding: 8px;
+  padding: 13px;
   background: ${styles.colors.primary};
-  ${styles.mixins.fontSize(35, 35)}
+  ${styles.mixins.fontSize(25, 25)}
+  font-weight: normal;
 
   @media (max-width: ${styles.sizes.breakpoint.small}) {
     text-align: center;

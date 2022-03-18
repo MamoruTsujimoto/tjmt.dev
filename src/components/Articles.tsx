@@ -2,7 +2,6 @@ import styled from '@emotion/styled'
 import dayjs from 'dayjs'
 import Link from 'next/link'
 import { FC } from 'react'
-import Category from 'components/Category'
 import { BlogPost } from 'types/notion'
 import styles from 'utils/styles'
 
@@ -17,16 +16,13 @@ const Articles: FC<BlogCardProps> = ({ post }) => {
     <Article key={post.title}>
       <Link href={`/post/${post.slug}`} passHref>
         <A>
-          {/* <ArticleItemName>
-            <div>[ category ]</div>
-            <div>[ date ]</div>
-            <div>[ title ]</div>
-          </ArticleItemName> */}
-          <ArticleWrapper>
-            <Category cat={post.category} />
-            <H4>{dayjs(post.date).format('MMM DD, YYYY')}</H4>
-            <H2>{post.title}</H2>
-          </ArticleWrapper>
+          <SECTION>
+            <PostData dateTime={post.date}>{dayjs(post.date).format('MMM DD, YYYY')}</PostData>
+            <H2>
+              <Category>[ {post.category.name} ]</Category>
+              {post.title}
+            </H2>
+          </SECTION>
         </A>
       </Link>
     </Article>
@@ -42,20 +38,20 @@ const Article = styled.article`
     transition: background-color 0.8s ease;
   }
 
+  &:last-of-type {
+    border-bottom: 1px solid ${styles.colors.secondary};
+  }
+
   &:hover {
-    div,
-    h4,
+    time,
     h2 {
       background-color: #000;
-    }
-    * {
       color: #fff;
     }
   }
 
   &:last-of-type {
     margin: 0;
-    border-bottom: 1px solid ${styles.colors.secondary};
   }
 `
 
@@ -71,9 +67,16 @@ const H2 = styled.h2`
   }
 `
 
-const H4 = styled.h4`
-  padding: 8px 15px 7px;
-  ${styles.mixins.fontSize(30, 35)}
+const Category = styled.span`
+  display: block;
+  margin: 0 0 3px;
+  font-weight: normal;
+  ${styles.mixins.fontSize(11, 11)}
+`
+
+const PostData = styled.time`
+  padding: 22px;
+  ${styles.mixins.fontSize(20, 20)}
   background: ${styles.colors.primary};
 `
 
@@ -88,22 +91,10 @@ const A = styled.a`
   } */
 `
 
-const ArticleItemName = styled.div`
+const SECTION = styled.section`
   display: grid;
-  grid-template-columns: 8% 23% 1fr;
-  align-items: center;
-  margin: 0 0 5px;
-
-  div {
-    background: ${styles.colors.primary};
-  }
-`
-
-const ArticleWrapper = styled.div`
-  display: grid;
-  grid-template-columns: auto auto 1fr;
-  grid-template-rows: 50px;
-  gap: 1px;
+  grid-template-columns: auto 1fr;
+  grid-gap: 1px;
   align-items: center;
 `
 
