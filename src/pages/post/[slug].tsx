@@ -91,6 +91,8 @@ const H1 = styled.h1`
 
   @media (max-width: ${styles.sizes.breakpoint.small}) {
     margin: 30px 0 25px;
+    padding: 0 20px;
+    ${styles.mixins.fontSize(25, 30)}
   }
 `
 
@@ -110,10 +112,12 @@ const Category = styled.span`
 
 const ArticleBody = styled.div`
   width: 800px;
-  margin: 10em auto;
+  margin: 50px auto;
 
   @media (max-width: ${styles.sizes.breakpoint.small}) {
     width: 100%;
+    margin: 20px auto;
+    padding: 0 20px;
   }
 
   p {
