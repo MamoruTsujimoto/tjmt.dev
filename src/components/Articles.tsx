@@ -15,15 +15,15 @@ const Articles: FC<BlogCardProps> = ({ post }) => {
   return (
     <Article key={post.title}>
       <Link href={`/post/${post.slug}`} passHref>
-        <A>
-          <SECTION>
+        <a>
+          <ArticleBody>
             <PostData dateTime={post.date}>{dayjs(post.date).format('MMM DD, YYYY')}</PostData>
             <H2>
               <Category>[ {post.category.name} ]</Category>
               {post.title}
             </H2>
-          </SECTION>
-        </A>
+          </ArticleBody>
+        </a>
       </Link>
     </Article>
   )
@@ -39,7 +39,12 @@ const Article = styled.article`
   }
 
   &:last-of-type {
+    margin: 0;
     border-bottom: 1px solid ${styles.colors.secondary};
+
+    h2 {
+      margin: 0;
+    }
   }
 
   &:hover {
@@ -48,10 +53,6 @@ const Article = styled.article`
       background-color: #000;
       color: #fff;
     }
-  }
-
-  &:last-of-type {
-    margin: 0;
   }
 `
 
@@ -78,24 +79,23 @@ const PostData = styled.time`
   padding: 22px;
   ${styles.mixins.fontSize(20, 20)}
   background: ${styles.colors.primary};
-`
 
-const A = styled.a`
-  /* & * {
-    transition: background-color 0.3s ease;
+  @media (max-width: ${styles.sizes.breakpoint.small}) {
+    display: block;
+    padding: 10px;
+    ${styles.mixins.fontSize(15, 15)}
   }
-
-  &:hover * {
-    color: ${styles.colors.primary};
-    background-color: ${styles.colors.secondary};
-  } */
 `
 
-const SECTION = styled.section`
+const ArticleBody = styled.div`
   display: grid;
   grid-template-columns: auto 1fr;
   grid-gap: 1px;
   align-items: center;
+
+  @media (max-width: ${styles.sizes.breakpoint.small}) {
+    display: block;
+  }
 `
 
 export default Articles
