@@ -99,6 +99,13 @@ const globalStyles = css`
     -webkit-text-size-adjust: none;
   }
 
+  @supports (-webkit-touch-callout: none) {
+    html,
+    body {
+      height: -webkit-fill-available;
+    }
+  }
+
   html,
   body {
     font-size: 62.5%;
