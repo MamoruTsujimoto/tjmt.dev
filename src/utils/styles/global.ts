@@ -121,7 +121,7 @@ const globalStyles = css`
     padding: 0;
     color: var(--text);
     font-weight: 500;
-    font-family: 'Helvetica Neue', 'M PLUS 1p', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
     letter-spacing: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
